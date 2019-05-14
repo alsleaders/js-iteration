@@ -63,6 +63,12 @@
  * }
  */
 
+const yelling = words => {
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i].toUpperCase()
+  }
+  return words
+}
 // ...
 
 /**
@@ -71,7 +77,13 @@
  * numbers as an argument and returns a new array with all
  * the numbers multiplied by 2
  */
-
+const doubleTrouble = array => {
+  let answers = []
+  for (let i = 0; i < array.length; i++) {
+    answers[i] = array[i] * 2
+  }
+  return answers
+}
 // ...
 
 /*
@@ -80,20 +92,43 @@
  * suffixed with " is at index X" where X is the index of the element
  */
 
+const stringyIndexes = array => {
+  let newArray = []
+  for (let i = 0; i < array.length; i++) {
+    newArray[i] = array[i] + ' is at index ' + [i]
+  }
+  return newArray
+}
 // ...
 
 /*
  * Define a function onlyTheEvenSurvive that accepts an array of
  * numbers and returns only the elements that are even
  */
-
+const onlyTheEvenSurvive = array => {
+  let evens = []
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 === 0) {
+      evens.push(array[i])
+    }
+  }
+  return evens
+}
 // ...
 
 /*
  * Define a function onlyTheEvenIndexedSurvive that accepts an array of
  * numbers and returns only the elements at indexes that are even
  */
-
+const onlyTheEvenIndexedSurvive = array => {
+  let evens = []
+  for (let i = 0; i < array.length; i++) {
+    if (i % 2 === 0) {
+      evens.push(array[i])
+    }
+  }
+  return evens
+}
 // ...
 
 /*
@@ -110,6 +145,12 @@
  * }
  */
 
+const bestMoviesOfTheYear = (movies, aYear) => {
+  return movies
+    .filter(movie => movie.score > 90 && movie.year === aYear)
+    .map(movie => movie.name)
+}
+
 // ...
 
 /*
@@ -117,6 +158,12 @@
  * numbers and returns true if every element of the array is
  * odd.
  */
+
+const everyoneIsOdd = numbers => {
+  return numbers.every(number => {
+    return number % 2 === 1
+  })
+}
 
 // ...
 
@@ -126,7 +173,12 @@
  * `needle` inside
  */
 
-// ...
+const findTheNeedle = words => {
+  const value = words.filter(word => {
+    return word.toLowerCase().includes('needle')
+  })
+  return value[0]
+}
 
 /*
  * Define a function findTheNeedleIndex that accepts an array of
@@ -186,10 +238,13 @@
 /* eslint-disable no-undef */
 
 import test from 'ava'
+import { isBoolean } from 'util'
 
 const ensureDefined = (t, method) => {
   if (eval(`typeof ${method}`) !== 'function') {
-    t.fail(`\n\n\n\n\n⚡️⚡️⚡️⚡️⚡️ The next step is to define the function ${method} ⚡️⚡️⚡️⚡️⚡️\n\n\n`)
+    t.fail(
+      `\n\n\n\n\n⚡️⚡️⚡️⚡️⚡️ The next step is to define the function ${method} ⚡️⚡️⚡️⚡️⚡️\n\n\n`
+    )
   }
 }
 
